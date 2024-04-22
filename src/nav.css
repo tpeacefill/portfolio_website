@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Inika:wght@400;700&display=swap");
+
+.navbar {
+  background: transparent;
+  width: 100vw;
+  height: 80px; /* Changed from 20% to a fixed pixel value */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+}
+
+.navbar-content {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  justify-content: space-between;
+}
+
+.menu-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 30%;
+  align-items: center;
+}
+
+.menu-items ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  list-style: none;
+}
+
+.menu-items li {
+  color: #fff;
+  font-family: "Inika", sans-serif; /* Ensure you have this font available */
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-right: 20px; /* Keep or adjust the spacing between menu items */
+}
+
+.menu-items li a {
+  color: inherit; /* Makes the link color the same as the li element */
+  text-decoration: none; /* Removes underline from links */
+}
+
+.contact-button {
+  height: 50px;
+  margin-top: auto;
+  margin-bottom: auto;
+  background: white;
+  border: none;
+  width: 10%;
+  border-radius: 50px;
+  color: #000;
+  font-family: Inika;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  display: flex;
+}
