@@ -1,0 +1,26 @@
+.MenuItems li {
+    color: #000;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgba(255, 255, 255, 0.5);
+    font-family: InaiMathi;
+    font-size: 1rem;
+    font-style: normal;
+    line-height: normal;
+    list-style: none;
+    margin-top: 0;
+    margin-bottom: 0;
+    cursor: pointer;
+    font-weight: 400; /* default font weight */
+  }
+  
+  .MenuItems li.active {
+    font-weight: 700; /* active font weight */
+  }
+  
+  .MenuItems {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+  }
+  

@@ -9,7 +9,7 @@ function App() {
     <Router>
       <div className="app-container">
         <NavBar />
-        {/* Other components will also go here */}
+        <div className="sideDiv"/>
       </div>
     </Router>
   );
