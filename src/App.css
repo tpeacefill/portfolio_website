@@ -2,11 +2,101 @@
   background-color: white;
   color: white;
   min-height: 100vh; /* Full height */
+  display: flex;
+  flex-direction: column;
 }
 
 .sideDiv {
   height: 100vw;
   border-right: 1px solid rgba(0, 0, 0, 0.5);
   width: 70px;
-  
+}
+
+.HeroContent {
+  width: 75%;
+  height: 35%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-between;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+}
+
+.h1 {
+  color: #000;
+  font-family: InaiMathi;
+  font-size: 6.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.h2 {
+  color: #8a74ff;
+  font-family: InaiMathi;
+  font-size: 6.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: -25px;
+  margin-bottom: 35px;
+}
+
+.HeroText {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.HeroText2 {
+  color: rgba(0, 0, 0, 0.5);
+  font-family: InaiMathi;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+
+.resume-download {
+  width: 160px;
+  height: 48px;
+  flex-shrink: 0;
+  margin-left: 20px;
+  border: none;
+  background: transparent;
+  color: #000;
+  font-family: InaiMathi;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Centers items vertically in the button */
+  justify-content: center; /* Centers items horizontally in the button */
+  gap: 8px; /* Optional: adds space between text and SVG */
+}
+
+.Hero-Image {
+  width: 396.925px;
+  height: 473.145px;
+  flex-shrink: 0;
+  margin-top: auto;
+  margin-bottom: auto;
 }

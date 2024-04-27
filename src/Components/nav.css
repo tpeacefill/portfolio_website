@@ -1,9 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Inika:wght@400;700&display=swap");
-
 .navbar {
   background: transparent;
   width: 100vw;
-  height: 75px; /* Changed from 20% to a fixed pixel value */
+  height: 60px; /* Changed from 20% to a fixed pixel value */
   position: fixed;
   top: 0;
   left: 0;
@@ -40,7 +38,6 @@
   justify-content: space-between;
 }
 
-
 .Name {
   flex-direction: row;
   display: flex;
@@ -55,9 +52,9 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  margin-right: 5px;
-  margin-top: 0;
-  margin-bottom: 0;
+  margin-right: 2%;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .Name2 {
@@ -67,29 +64,8 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.ContactButton {
-  color: #fff;
-  -webkit-text-stroke-width: 1;
-  -webkit-text-stroke-color: #000;
-  font-family: InaiMathi;
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  background: #000;
-  border: none;
-  width: 160px;
-  height: 48px;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  border-radius: 25px;
   margin-top: auto;
   margin-bottom: auto;
 }
+
+

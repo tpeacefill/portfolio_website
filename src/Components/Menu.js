@@ -6,7 +6,7 @@ const Menu = () => {
   const [activeMenuItem, setActiveMenuItem] = useState('Home');
 
   // Menu items data
-  const menuItems = ['Home', 'About Me', 'Services', 'Products'];
+  const menuItems = ['Home', 'About Me', 'Services', 'Projects'];
 
   return (
     <ul className="MenuItems">
