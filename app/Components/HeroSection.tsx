@@ -1,18 +1,27 @@
-import Image from 'next/image';
-import React from 'react';
+import Image from "next/image";
+import React from "react";
 
 const HeroSection = () => {
   return (
-    <div className='justify-center items-center flex flex-col'>
-      <div className="mt-28 text-4xl max-md:mt-10 max-md:max-w-full">
+    <div className="flex flex-col items-center justify-center px-4">
+      <h1 className="mt-28 text-[28px] sm:text-[28px] md:text-[36px] lg:text-[40px] font-light text-white max-md:mt-10 max-md:max-w-full font-Poppins text-center">
         Hey there, let me put your ideas together!
-      </div>
-      <div className="mt-5 text-4xl text-white text-opacity-50 max-md:max-w-full">
+      </h1>
+      <h1 className="text-[28px] sm:text-[28px] md:text-[36px] lg:text-[40px] font-light text-white text-opacity-50 max-md:max-w-full font-Poppins text-center">
         Each piece of idea becomes a unit
+      </h1>
+      <div className="mt-10 w-full max-w-[569px] aspect-[0.98] max-md:mt-10">
+        <Image
+          src="/HeroImage.png"
+          alt="hero"
+          width={569}
+          height={569}
+          layout="responsive"
+          className="rounded-md"
+        />
       </div>
-      <Image src={"/HeroImage.png"} alt="hero" className="mt-16 max-w-full aspect-[0.98] w-[569px] max-md:mt-10" width={569} height={569}/>
     </div>
   );
-}
+};
 
 export default HeroSection;
