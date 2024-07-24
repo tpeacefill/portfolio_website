@@ -1,13 +1,13 @@
-import HeroSection from "./Components/HeroSection";
-import Navbar from "./Components/Navbar";
+import HeroSection from "./Sections/HeroSection";
+import Navbar from "./Sections/Navbar";
+import Expertise from "./Sections/Expertise";
 
 export default function Home() {
   return (
     <div className="w-full min-h-screen bg-black flex flex-col">
       <Navbar />
-      <div className="flex-grow">
-        <HeroSection />
-      </div>
+      <HeroSection />
+      <Expertise />
     </div>
   );
 }
