@@ -1,6 +1,7 @@
 import HeroSection from "./Sections/HeroSection";
 import Navbar from "./Sections/Navbar";
 import Expertise from "./Sections/Expertise";
+import WorkExperience from "./Sections/WorkExperience";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <Expertise />
+      <WorkExperience />
     </div>
   );
 }

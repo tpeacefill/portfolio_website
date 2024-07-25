@@ -23,7 +23,7 @@ const Navbar = () => {
   return (
     <div
       className={`w-full h-[80px] flex items-center justify-center fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        isScrolled ? "bg-black/60 backdrop-blur-lg" : "bg-black"
+        isScrolled ? "bg-black/30 backdrop-blur-sm" : "bg-black"
       }`}
     >
       <div className="w-full max-w-screen-xl flex items-center justify-between px-4">

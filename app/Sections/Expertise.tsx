@@ -3,7 +3,7 @@ import styles from "./Expertise.module.css";
 
 const Expertise = () => {
   return (
-    <div className="w-full flex justify-center bg-black">
+    <div className="w-full flex justify-center bg-black mb-64">
       <div className="w-full max-w-screen-xl flex flex-col px-4">
         <h1 className="w-full text-[28px] sm:text-[28px] md:text-[36px] lg:text-[40px] text-white text-opacity-50 max-md:max-w-full font-Poppins font-light">
           I am Peacefill Tawiah
