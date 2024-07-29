@@ -2,9 +2,9 @@ import React from "react";
 
 const WorkExperience = () => {
   return (
-    <div className="w-full h-auto flex justify-center bg-black mb-64">
+    <div className="w-full h-auto flex justify-center bg-black mb-48">
       <div className="w-full h-auto max-w-screen-xl flex flex-col px-4">
-        <h1 className="w-full text-[28px] sm:text-[28px] md:text-[36px] lg:text-[40px] font-Poppins font-light text-white">
+        <h1 className="w-full text-[28px] sm:text-[28px] md:text-[36px] lg:text-[40px] lg:mb-24 md:mb-24 font-Poppins font-light text-white">
           My years of experience
           <br />
           are without question
@@ -54,7 +54,7 @@ const WorkExperience = () => {
         </div>
 
         {/* Show this on large screens */}
-        <div className="hidden lg:flex flex-col items-center justify-between mt-24 w-full lg:flex-row">
+        <div className="hidden lg:flex flex-col items-center justify-between mt-24 w-full lg:flex-row mb-56">
           <h1 className="text-white text-opacity-50 text-[128px] font-Poppins">
             2020
           </h1>
