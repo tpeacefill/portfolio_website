@@ -3,7 +3,7 @@ import Capsule from "../Components/Capsule";
 
 const Stack = () => {
   return (
-    <div className="w-full h-auto flex justify-center bg-black mb-64 overflow-hidden">
+    <div className="w-full h-auto flex justify-center bg-black mb-32 md:mb-64 overflow-hidden">
       <div className="w-full h-auto max-w-screen-xl flex flex-col px-4">
         <div className="flex flex-col items-center px-5 text-5xl text-white">
           <p className="max-md:max-w-full text-[32px] sm:text-[32px] md:text-[40px] lg:text-[48px] font-Poppins text-center mb-3">
@@ -15,18 +15,17 @@ const Stack = () => {
             I can meet your project specific need.
           </span>
 
-          <div className="flex w-full min-w-[1170px] h-[310px] flex-col justify-center items-center md:min-w-[80%] sm:min-w-[50%]">
-            <div className="flex w-full flex-row mb-14 items-center">
+          <div className="flex w-full min-w-[1170px] h-[310px] flex-col justify-center items-center md:min-w-[980px] sm:min-w-[980px]">
+            <div className="flex w-full flex-row mb-14 items-center justify-center">
               <Capsule
                 text="React"
-                width="219px"
+                width="sm:139px md:179px lg:219px"
                 position="relative" // Example position
                 rotation={15.4} // Rotate by 45 degrees
                 Icon={
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="38"
-                    height="38"
+                    className="w-[22px] h-[22px] sm:w-[22px] sm:h-[22px] md:w-[30px] md:h-[30px] lg:w-[38px] lg:h-[38px]"
                     viewBox="0 0 38 38"
                     fill="none"
                   >
@@ -53,14 +52,13 @@ const Stack = () => {
 
               <Capsule
                 text="Next.js"
-                width="219px"
+                width="sm:139px md:179px lg:219px"
                 position="relative" // Example position
                 rotation={25.46} // Rotate by 45 degrees
                 Icon={
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="31"
-                    height="31"
+                    className="w-[20px] h-[20px] sm:w-[20px] sm:h-[20px] md:w-[25px] md:h-[25px] lg:w-[31px] lg:h-[31px]"
                     viewBox="0 0 31 31"
                     fill="none"
                   >
@@ -87,14 +85,13 @@ const Stack = () => {
 
               <Capsule
                 text="Typescript"
-                width="271px"
+                width="sm:171px md:221px lg:271px"
                 position="relative" // Example position
                 rotation={45.36} // Rotate by 45 degrees
                 Icon={
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="31"
-                    height="31"
+                    className="w-[20px] h-[20px] sm:w-[20px] sm:h-[20px] md:w-[25px] md:h-[25px] lg:w-[31px] lg:h-[31px]"
                     viewBox="0 0 31 31"
                     fill="none"
                   >
@@ -121,14 +118,13 @@ const Stack = () => {
 
               <Capsule
                 text="Figma"
-                width="219px"
+                width="sm:169px md:194px lg:219px"
                 position="relative" // Example position
                 rotation={-162.93} // Rotate by 45 degrees
                 Icon={
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="22"
-                    height="32"
+                    className="w-[21px] h-[21px] sm:w-[21px] sm:h-[21px] md:w-[26px] md:h-[26px] lg:w-[32px] lg:h-[32px]"
                     viewBox="0 0 22 32"
                     fill="none"
                   >
@@ -154,14 +150,13 @@ const Stack = () => {
 
               <Capsule
                 text="HTML"
-                width="172px"
+                width="sm:132px md:152px lg:172px"
                 position="relative" // Example position
                 rotation={0} // Rotate by 45 degrees
                 Icon={
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="27"
-                    height="30"
+                    className="w-[20px] h-[20px] sm:w-[20px] sm:h-[20px] md:w-[25px] md:h-[25px] lg:w-[31px] lg:h-[31px]"
                     viewBox="0 0 27 30"
                     fill="none"
                   >
@@ -176,14 +171,13 @@ const Stack = () => {
 
               <Capsule
                 text="Git"
-                width="172px"
+                width="sm:132px md:152px lg:172px"
                 position="relative" // Example position
                 rotation={-29.09} // Rotate by 45 degrees
                 Icon={
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="31"
-                    height="31"
+                    className="w-[20px] h-[20px] sm:w-[20px] sm:h-[20px] md:w-[25px] md:h-[25px] lg:w-[31px] lg:h-[31px]"
                     viewBox="0 0 31 31"
                     fill="none"
                   >
@@ -197,17 +191,16 @@ const Stack = () => {
               />
             </div>
 
-            <div className="flex w-full flex-row">
+            <div className="flex w-full flex-row items-center justify-center">
               <Capsule
                 text="Firebase"
-                width="242px"
+                width="sm:162px md:202px lg:242px"
                 position="relative" // Example position
                 rotation={-5.16} // Rotate by 45 degrees
                 Icon={
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="34"
-                    height="34"
+                    className="w-[24px] h-[24px] sm:w-[24px] sm:h-[24px] md:w-[29px] md:h-[29px] lg:w-[34px] lg:h-[34px]"
                     viewBox="0 0 34 34"
                     fill="none"
                   >
@@ -235,14 +228,13 @@ const Stack = () => {
 
               <Capsule
                 text="Javascript"
-                width="278px"
+                 width="sm:178px md:228px lg:278px"
                 position="relative" // Example position
                 rotation={167.46} // Rotate by 45 degrees
                 Icon={
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="32"
-                    height="32"
+                    className="w-[21px] h-[21px] sm:w-[21px] sm:h-[21px] md:w-[26px] md:h-[26px] lg:w-[32px] lg:h-[32px]"
                     viewBox="0 0 32 32"
                     fill="none"
                   >
@@ -257,14 +249,13 @@ const Stack = () => {
 
               <Capsule
                 text="Tailwind"
-                width="253.74px"
+                width="sm:153.74px md:203.74px lg:253.74px"
                 position="relative" // Example position
                 rotation={-19.6} // Rotate by 45 degrees
                 Icon={
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="58"
-                    height="45"
+                    className="w-[22px] h-[22px] sm:w-[38px] sm:h-[25px] md:w-[48px] md:h-[35px] lg:w-[58px] lg:h-[45px]"
                     viewBox="0 0 58 45"
                     fill="none"
                   >
@@ -279,14 +270,13 @@ const Stack = () => {
 
               <Capsule
                 text="CSS"
-                width="172px"
+                width="sm:132px md:152px lg:172px"
                 position="relative" // Example position
                 rotation={29.69} // Rotate by 45 degrees
                 Icon={
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="31"
-                    height="31"
+                    className="w-[20px] h-[20px] sm:w-[20px] sm:h-[20px] md:w-[25px] md:h-[25px] lg:w-[31px] lg:h-[31px]"
                     viewBox="0 0 31 31"
                     fill="none"
                   >
@@ -303,14 +293,13 @@ const Stack = () => {
 
               <Capsule
                 text="React Native"
-                width="291px"
+                width="sm:191px md:241px lg:295px"
                 position="relative" // Example position
                 rotation={-30.22} // Rotate by 45 degrees
                 Icon={
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="31"
-                    height="31"
+                    className="w-[20px] h-[20px] sm:w-[20px] sm:h-[20px] md:w-[25px] md:h-[25px] lg:w-[31px] lg:h-[31px]"
                     viewBox="0 0 31 31"
                     fill="none"
                   >
