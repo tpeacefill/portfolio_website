@@ -7,6 +7,7 @@ import Services from "./Sections/Services";
 import ProjectsDisplaytext from "./Sections/ProjectsDisplaytext";
 import ProjectsPortfolio from "./Sections/ProjectsPortfolio";
 import GetInTouch from "./Sections/GetInTouch";
+import AboutMe from "./Sections/AboutMe";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <ProjectsDisplaytext />
       <ProjectsPortfolio/>
       <GetInTouch />
+      <AboutMe />
     </div>
   );
 }

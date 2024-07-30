@@ -3,7 +3,7 @@ import HighlightPlus from "../Components/HighlightPlus"; // Adjust the import pa
 
 const GetInTouch = () => {
   return (
-    <div className="w-full h-auto flex justify-center bg-black mb-48">
+    <div className="w-full h-auto flex justify-center bg-black lg:mb-48 lg:mt-24 md:mb-48 md:mt-24">
       <div className="flex flex-col items-center px-5 text-center text-white">
         <h1 className="self-stretch w-full text-[40px] sm:text-[40px] md:text-[50px] lg:text-[80px] font-Poppins max-md:max-w-full">
           Let me transform your&nbsp; 
