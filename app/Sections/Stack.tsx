@@ -6,9 +6,9 @@ const Stack = () => {
     <div className="w-full h-auto flex justify-center bg-black mb-64 overflow-hidden">
       <div className="w-full h-auto max-w-screen-xl flex flex-col px-4">
         <div className="flex flex-col items-center px-5 text-5xl text-white">
-          <p className="max-md:max-w-full text-[32px] sm:text-[32px] md:text-[40px] lg:text-[48px] font-Poppins text-center mb-5">
-            I possess a wide variety of stack
-            <br />
+          <p className="max-md:max-w-full text-[32px] sm:text-[32px] md:text-[40px] lg:text-[48px] font-Poppins text-center mb-3">
+            I possess a wide variety of stack&nbsp;
+            <br className="hidden md:block" />
             that I use for my work that you’ll need.
           </p>
           <span className="text-violet-500 max-md:max-w-full text-[32px] sm:text-[32px] md:text-[40px] lg:text-[48px] font-Poppins mb-16 max-sm:mt-10 text-center">

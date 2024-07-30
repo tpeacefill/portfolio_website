@@ -16,9 +16,6 @@ const config: Config = {
       fontFamily: {
         Poppins: ['var(--poppins)'],
       },
-      screens: {
-        '890px': '890px',
-      },
     },
   },
   plugins: [],

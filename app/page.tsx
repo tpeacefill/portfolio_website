@@ -8,6 +8,7 @@ import ProjectsDisplaytext from "./Sections/ProjectsDisplaytext";
 import ProjectsPortfolio from "./Sections/ProjectsPortfolio";
 import GetInTouch from "./Sections/GetInTouch";
 import AboutMe from "./Sections/AboutMe";
+import Footer from "./Sections/Footer";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <ProjectsPortfolio/>
       <GetInTouch />
       <AboutMe />
+      <Footer />
     </div>
   );
 }
