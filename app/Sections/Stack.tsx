@@ -15,7 +15,7 @@ const Stack = () => {
             I can meet your project specific need.
           </span>
 
-          <div className="flex w-full min-w-[1170px] h-[310px] flex-col justify-center items-center md:min-w-[960px]">
+          <div className="flex w-full min-w-[1170px] h-[310px] flex-col justify-center items-center md:min-w-[80%] sm:min-w-[50%]">
             <div className="flex w-full flex-row mb-14 items-center">
               <Capsule
                 text="React"

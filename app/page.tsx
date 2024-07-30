@@ -3,6 +3,8 @@ import Navbar from "./Sections/Navbar";
 import Expertise from "./Sections/Expertise";
 import WorkExperience from "./Sections/WorkExperience";
 import Stack from "./Sections/Stack";
+import Services from "./Sections/Services";
+import ProjectsDisplaytext from "./Sections/ProjectsDisplaytext";
 
 export default function Home() {
   return (
@@ -12,6 +14,8 @@ export default function Home() {
       <Expertise />
       <WorkExperience />
       <Stack/>
+      <Services />
+      <ProjectsDisplaytext />
     </div>
   );
 }
