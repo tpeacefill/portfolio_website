@@ -26,7 +26,7 @@ const Navbar = () => {
         isScrolled ? "bg-black/30 backdrop-blur-sm" : "bg-black"
       }`}
     >
-      <div className="w-full max-w-screen-xl flex items-center justify-between px-4">
+      <div className="w-full px-4 sm:px-8 md:px-14 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <Image src="/portfolio_logo.svg" alt="logo" width={40} height={40} />
           <p className="hidden sm:block text-white font-Poppins text-[16px] font-normal font-weight-500">

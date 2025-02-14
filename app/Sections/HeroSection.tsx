@@ -10,12 +10,12 @@ const HeroSection = () => {
   
   // Adjusted scroll animations for different screen sizes
   const opacity = useTransform(scrollY, 
-    [0, 100, 200], 
+    [0, 150, 300], // Increased scroll range
     [1, 0.8, 0]
   );
   
   const y = useTransform(scrollY, 
-    [0, 100, 200], 
+    [0, 150, 300], // Increased scroll range
     [0, 50, 100]
   );
   
@@ -78,7 +78,7 @@ const Button = ({
   ];
 
   return (
-    <div className="relative min-h-screen bg-black overflow-hidden">
+    <div className="relative min-h-full bg-black overflow-hidden">
       {/* Grid background */}
       <div 
         className="absolute inset-0" 
@@ -88,7 +88,7 @@ const Button = ({
         }}
       />
 
-      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12 md:pb-16 relative z-10">
         <m.div 
           style={{ opacity }}
           className="pt-32"
