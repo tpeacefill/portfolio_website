@@ -1,12 +1,20 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion as m, useScroll, useTransform } from 'framer-motion';
 import { ArrowUpRight, Terminal, Layout, Code2 } from 'lucide-react';
 
 const HeroSection = () => {
   const [isHovered, setIsHovered] = useState(false);
   const { scrollY } = useScroll();
+  const [windowWidth, setWindowWidth] = useState(1024);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Set initial width
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   
   // Adjusted scroll animations for different screen sizes
   const opacity = useTransform(scrollY, 
@@ -188,7 +196,7 @@ const Button = ({
                           rotate: isHovered ? 0 : -index * 2,
                           scale: isHovered 
                             ? 1 
-                            : 1 - index * (window.innerWidth < 768 ? 0.03 : 0.05)
+                            : 1 - index * (windowWidth < 768 ? 0.03 : 0.05)
                         }}
                         transition={{ 
                           duration: 0.4,
@@ -214,7 +222,7 @@ const Button = ({
                             initial={false}
                             animate={{
                               height: isHovered 
-                                ? window.innerWidth < 768 
+                                ? windowWidth < 768 
                                   ? '180px' 
                                   : '200px'
                                 : '160px'

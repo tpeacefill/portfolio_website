@@ -2,20 +2,20 @@
 
 import React from "react";
 import { motion as m, useScroll, useTransform } from "framer-motion";
-import { Layout, Code2, Figma, Palette, Layers, Box, Crop, Code, Globe, Sparkles, AppWindow } from 'lucide-react';
+import { Layout, Code2, Globe, Code, Sparkles } from 'lucide-react';
 
 const Expertise = () => {
   const { scrollYProgress } = useScroll();
 
   const headerY = useTransform(
     scrollYProgress,
-    [0, 0.1],
+    [0, 0.2],
     [0, -50]
   );
 
   const headerOpacity = useTransform(
     scrollYProgress,
-    [0, 0.1],
+    [0, 0.2],
     [1, 0]
   );
 
@@ -29,17 +29,17 @@ const Expertise = () => {
       skills: [
         {
           title: "Interface Design",
-          icon: <Layers className="w-5 h-5" />,
+          icon: <Layout className="w-5 h-5" />,
           description: "Creating clean, modern user interfaces with attention to detail"
         },
         {
           title: "Design Systems",
-          icon: <Box className="w-5 h-5" />,
+          icon: <Layout className="w-5 h-5" />,
           description: "Building scalable and consistent design systems"
         },
         {
           title: "Prototyping",
-          icon: <Crop className="w-5 h-5" />,
+          icon: <Layout className="w-5 h-5" />,
           description: "Interactive prototypes and animations"
         }
       ],
@@ -77,7 +77,7 @@ const Expertise = () => {
   ];
 
   return (
-    <div className="w-full min-h-screen bg-black relative overflow-hidden py-20">
+    <div className="w-full min-h-screen bg-black relative overflow-hidden py-24 sm:py-32 md:py-40">
       {/* Background grid */}
       <div 
         className="absolute inset-0" 
@@ -95,17 +95,19 @@ const Expertise = () => {
           }}
           className="mb-20"
         >
-          <m.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl text-white/50 font-light mb-2">
-              I am Peacefill Tawiah
-            </h2>
-            <h1 className="text-xl sm:text-2xl md:text-3xl text-white font-light">
-              An expert in two different fields...
-            </h1>
+          <m.div className="mb-20">
+            <m.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 20, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 className="text-2xl sm:text-3xl md:text-4xl text-white/50 font-light mb-2">
+                Hello! I&apos;m Peacefill Tawiah
+              </h2>
+              <h1 className="text-xl sm:text-2xl md:text-3xl text-white font-light">
+                A passionate designer and developer crafting digital experiences
+              </h1>
+            </m.div>
           </m.div>
         </m.div>
 
