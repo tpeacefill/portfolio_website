@@ -1,19 +1,33 @@
 'use client'
 
-import React from "react";
+
+import React, { useEffect, useState } from "react";
 import { motion as m } from "framer-motion";
 
 const WorkExperience: React.FC = () => {
+  const [particles, setParticles] = useState<{ x: number; y: number }[]>([]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      // Initialize particles with random positions
+      const newParticles = Array.from({ length: 20 }).map(() => ({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+      }));
+      setParticles(newParticles);
+    }
+  }, []);
+
   return (
     <div className="w-full h-auto flex justify-center bg-black mb-48 relative overflow-hidden">
       {/* Floating Particles */}
-      {Array.from({ length: 20 }).map((_, index) => (
+      {particles.map((particle, index) => (
         <m.div
           key={index}
           className="absolute w-1 h-1 bg-white rounded-full"
           initial={{
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
+            x: particle.x,
+            y: particle.y,
             opacity: 0.1,
           }}
           animate={{
