@@ -16,7 +16,8 @@
     "motion": "^12.4.3",
     "next": "14.2.5",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-intersection-observer": "^9.15.1"
   },
   "devDependencies": {
     "@types/node": "^20",

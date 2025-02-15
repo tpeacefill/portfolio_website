@@ -1,23 +1,34 @@
 'use client'
 
 import React from "react";
-import { motion as m, useScroll, useTransform } from "framer-motion";
-import { Layout, Code2, Globe, Code, Sparkles } from 'lucide-react';
+import { motion as m } from "framer-motion";
+import { Layout, Code2, Figma, Palette, Layers, Box, Crop, Code, Globe, Sparkles, AppWindow } from 'lucide-react';
 
 const Expertise = () => {
-  const { scrollYProgress } = useScroll();
+  const headerVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.6, -0.05, 0.01, 0.99]
+      }
+    }
+  };
 
-  const headerY = useTransform(
-    scrollYProgress,
-    [0, 0.2],
-    [0, -50]
-  );
-
-  const headerOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.2],
-    [1, 0]
-  );
+  const titleVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: {
+        duration: 0.8,
+        delay: 0.3,
+        ease: [0.6, -0.05, 0.01, 0.99]
+      }
+    }
+  };
 
   const expertiseCards = [
     {
@@ -29,17 +40,17 @@ const Expertise = () => {
       skills: [
         {
           title: "Interface Design",
-          icon: <Layout className="w-5 h-5" />,
+          icon: <Layers className="w-5 h-5" />,
           description: "Creating clean, modern user interfaces with attention to detail"
         },
         {
           title: "Design Systems",
-          icon: <Layout className="w-5 h-5" />,
+          icon: <Box className="w-5 h-5" />,
           description: "Building scalable and consistent design systems"
         },
         {
           title: "Prototyping",
-          icon: <Layout className="w-5 h-5" />,
+          icon: <Crop className="w-5 h-5" />,
           description: "Interactive prototypes and animations"
         }
       ],
@@ -88,28 +99,26 @@ const Expertise = () => {
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <m.div
-          style={{
-            y: headerY,
-            opacity: headerOpacity
-          }}
-          className="mb-20"
-        >
-          <m.div className="mb-20">
-            <m.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 20, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <h2 className="text-2xl sm:text-3xl md:text-4xl text-white/50 font-light mb-2">
-                Hello! I&apos;m Peacefill Tawiah
-              </h2>
-              <h1 className="text-xl sm:text-2xl md:text-3xl text-white font-light">
-                A passionate designer and developer crafting digital experiences
-              </h1>
-            </m.div>
-          </m.div>
-        </m.div>
+        <div className="mb-20">
+          <m.h2
+            variants={headerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="text-2xl sm:text-3xl md:text-4xl text-white/50 font-light mb-2"
+          >
+            Hello! I&apos;m Peacefill Tawiah
+          </m.h2>
+          <m.h1
+            variants={titleVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="text-xl sm:text-2xl md:text-3xl text-white font-light"
+          >
+            A passionate designer and developer crafting digital experiences
+          </m.h1>
+        </div>
 
         <div className="grid md:grid-cols-2 gap-6 md:gap-8">
           {expertiseCards.map((card, index) => (
