@@ -5,13 +5,13 @@ const GetInTouch = () => {
   return (
     <div className="w-full h-auto flex justify-center bg-black lg:mb-48 lg:mt-24 md:mb-48 md:mt-24">
       <div className="flex flex-col items-center px-5 text-center text-white">
-        <h1 className="self-stretch w-full text-[40px] sm:text-[40px] md:text-[50px] lg:text-[80px] font-Poppins max-md:max-w-full">
+        <h1 className="self-stretch w-full text-[40px] sm:text-[40px] md:text-[50px] lg:text-[80px] max-md:max-w-full">
           Let me transform your&nbsp; 
           <br className="hidden md:block" />
           ideas into
           <HighlightPlus>reality.</HighlightPlus>
         </h1>
-        <p className="mt-11 text-[16px] sm:text-[16px] md:text-[18px] lg:text-[20px] font-extralight font-Poppins text-white text-opacity-50 max-md:mt-7 max-md:max-w-full">
+        <p className="mt-11 text-[16px] sm:text-[16px] md:text-[18px] lg:text-[20px] font-extralight  text-white text-opacity-50 max-md:mt-7 max-md:max-w-full">
           The only bridge between you, your ideas, and reality is me. 
           <br className="hidden md:block"  />
           Please do well to get in touch with me and let’s get things started.

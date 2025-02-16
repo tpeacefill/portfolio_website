@@ -88,14 +88,14 @@ const ProjectsDisplaytext = () => {
         transition={{ duration: 1 }}
       >
         <div className="marquee">
-          <span className="gradient-text-1 text-[88px] sm:text-[88px] md:text-[108px] lg:text-[128px] font-Poppins font-light cursor-default">PROJECTS</span>
-          <span className="gradient-text-2 text-[88px] sm:text-[88px] md:text-[108px] lg:text-[128px] font-Poppins font-light cursor-default">PROJECTS</span>
-          <span className="gradient-text-3 text-[88px] sm:text-[88px] md:text-[108px] lg:text-[128px] font-Poppins font-light cursor-default">PROJECTS</span>
+          <span className="gradient-text-1 text-[88px] sm:text-[88px] md:text-[108px] lg:text-[128px]  font-light cursor-default">PROJECTS</span>
+          <span className="gradient-text-2 text-[88px] sm:text-[88px] md:text-[108px] lg:text-[128px] font-light cursor-default">PROJECTS</span>
+          <span className="gradient-text-3 text-[88px] sm:text-[88px] md:text-[108px] lg:text-[128px]  font-light cursor-default">PROJECTS</span>
         </div>
         <div className="marquee">
-          <span className="gradient-text-1 text-[88px] sm:text-[88px] md:text-[108px] lg:text-[128px] font-Poppins font-light cursor-default">PROJECTS</span>
-          <span className="gradient-text-2 text-[88px] sm:text-[88px] md:text-[108px] lg:text-[128px] font-Poppins font-light cursor-default">PROJECTS</span>
-          <span className="gradient-text-3 text-[88px] sm:text-[88px] md:text-[108px] lg:text-[128px] font-Poppins font-light cursor-default">PROJECTS</span>
+          <span className="gradient-text-1 text-[88px] sm:text-[88px] md:text-[108px] lg:text-[128px] font-light cursor-default">PROJECTS</span>
+          <span className="gradient-text-2 text-[88px] sm:text-[88px] md:text-[108px] lg:text-[128px]  font-light cursor-default">PROJECTS</span>
+          <span className="gradient-text-3 text-[88px] sm:text-[88px] md:text-[108px] lg:text-[128px]  font-light cursor-default">PROJECTS</span>
         </div>
       </motion.div>
 

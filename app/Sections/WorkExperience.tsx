@@ -52,7 +52,7 @@ const WorkExperience: React.FC = () => {
           }}
         />
 
-        <h1 className="w-full text-[28px] sm:text-[28px] md:text-[36px] lg:text-[40px] lg:mb-24 md:mb-24 font-Poppins font-light text-white relative">
+        <h1 className="w-full text-[28px] sm:text-[28px] md:text-[36px] lg:text-[40px] lg:mb-24 md:mb-24  font-light text-white relative">
           <m.span
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -74,7 +74,7 @@ const WorkExperience: React.FC = () => {
         {/* Show this on medium and small screens */}
         <div className="lg:hidden flex flex-col items-center mt-24 w-full">
           <m.h1 
-            className="text-white text-opacity-50 text-[88px] sm:text-[88px] md:text-[108px] lg:text-[128px] font-Poppins"
+            className="text-white text-opacity-50 text-[88px] sm:text-[88px] md:text-[108px] lg:text-[128px]"
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -143,7 +143,7 @@ const WorkExperience: React.FC = () => {
               <div className="relative flex flex-col items-center">
                 <div className="relative w-[26px] h-[26px] bg-[#8a74ff] rounded-full flex items-center justify-center">
                   <div className="absolute w-[70px] h-0.5 bg-[#8a74ff] right-full"></div>
-                  <p className="text-white text-opacity-50 text-[16px] sm:text-[16px] md:text-[18px] lg:text-[20px] font-Poppins font-thin absolute right-full mr-20">
+                  <p className="text-white text-opacity-50 text-[16px] sm:text-[16px] md:text-[18px] lg:text-[20px]  font-thin absolute right-full mr-20">
                     2021
                   </p>
                 </div>
@@ -152,7 +152,7 @@ const WorkExperience: React.FC = () => {
               <div className="relative flex flex-col items-center">
                 <div className="relative w-[26px] h-[26px] bg-[#8a74ff] rounded-full flex items-center justify-center">
                   <div className="absolute w-[70px] h-0.5 bg-[#8a74ff] left-full"></div>
-                  <p className="text-white text-opacity-50 text-[16px] sm:text-[16px] md:text-[18px] lg:text-[20px] font-Poppins font-thin absolute left-full ml-20">
+                  <p className="text-white text-opacity-50 text-[16px] sm:text-[16px] md:text-[18px] lg:text-[20px]  font-thin absolute left-full ml-20">
                     2022
                   </p>
                 </div>
@@ -161,7 +161,7 @@ const WorkExperience: React.FC = () => {
               <div className="relative flex flex-col items-center">
                 <div className="relative w-[26px] h-[26px] bg-[#8a74ff] rounded-full flex items-center justify-center">
                   <div className="absolute w-[70px] h-0.5 bg-[#8a74ff] right-full"></div>
-                  <p className="text-white text-opacity-50 text-[16px] sm:text-[16px] md:text-[18px] lg:text-[20px] font-Poppins font-thin absolute right-full mr-20">
+                  <p className="text-white text-opacity-50 text-[16px] sm:text-[16px] md:text-[18px] lg:text-[20px] font-thin absolute right-full mr-20">
                     2023
                   </p>
                 </div>
@@ -170,7 +170,7 @@ const WorkExperience: React.FC = () => {
           </div>
 
           <m.h1 
-            className="text-white text-[88px] sm:text-[88px] md:text-[108px] lg:text-[128px] font-Poppins mt-6"
+            className="text-white text-[88px] sm:text-[88px] md:text-[108px] lg:text-[128px]  mt-6"
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -182,7 +182,7 @@ const WorkExperience: React.FC = () => {
         {/* Show this on large screens */}
         <div className="hidden lg:flex flex-col items-center justify-between mt-24 w-full lg:flex-row mb-56">
           <m.h1 
-            className="text-white text-opacity-50 text-[128px] font-Poppins -ml-12"
+            className="text-white text-opacity-50 text-[128px]  -ml-12"
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -260,7 +260,7 @@ const WorkExperience: React.FC = () => {
                 transition={{ duration: 0.3, delay: 0.5 }}
               />
               <m.p 
-                className="text-white text-opacity-50 text-[20px] font-Poppins font-thin absolute top-[100px] -ml-0 whitespace-nowrap"
+                className="text-white text-opacity-50 text-[20px] font-thin absolute top-[100px] -ml-0 whitespace-nowrap"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.6 }}
@@ -282,7 +282,7 @@ const WorkExperience: React.FC = () => {
                 transition={{ duration: 0.3, delay: 0.8 }}
               />
               <m.p 
-                className="text-white text-opacity-50 text-[20px] font-Poppins font-thin absolute bottom-[100px] -ml-0 whitespace-nowrap"
+                className="text-white text-opacity-50 text-[20px] font-thin absolute bottom-[100px] -ml-0 whitespace-nowrap"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.9 }}
@@ -304,7 +304,7 @@ const WorkExperience: React.FC = () => {
                 transition={{ duration: 0.3, delay: 1.1 }}
               />
               <m.p 
-                className="text-white text-opacity-50 text-[20px] font-Poppins font-thin absolute top-[100px] -ml-1 whitespace-nowrap"
+                className="text-white text-opacity-50 text-[20px] font-thin absolute top-[100px] -ml-1 whitespace-nowrap"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 1.2 }}
@@ -315,7 +315,7 @@ const WorkExperience: React.FC = () => {
           </div>
 
           <m.h1 
-            className="text-white text-[128px] font-Poppins"
+            className="text-white text-[128px]"
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}

@@ -51,7 +51,7 @@ const Stack = () => {
       <div className="w-full h-auto max-w-screen-xl flex flex-col px-4 relative">
         <div className="flex flex-col items-center px-5 text-5xl text-white">
           <motion.p 
-            className="max-md:max-w-full text-[32px] sm:text-[32px] md:text-[40px] lg:text-[48px] font-Poppins text-center mb-3"
+            className="max-md:max-w-full text-[32px] sm:text-[32px] md:text-[40px] lg:text-[48px]  text-center mb-3"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -63,7 +63,7 @@ const Stack = () => {
           </motion.p>
           
           <motion.span 
-            className="text-violet-500 max-md:max-w-full text-[32px] sm:text-[32px] md:text-[40px] lg:text-[48px] font-Poppins mb-16 max-sm:mt-10 text-center"
+            className="text-violet-500 max-md:max-w-full text-[32px] sm:text-[32px] md:text-[40px] lg:text-[48px]  mb-16 max-sm:mt-10 text-center"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}

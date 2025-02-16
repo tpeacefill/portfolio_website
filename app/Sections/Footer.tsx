@@ -16,15 +16,15 @@ const Footer = () => {
                     width={40}
                     height={40}
                   />
-                  <p className="flex-auto my-auto text-white text-opacity-50 font-Poppins text-[16px] font-normal font-weight-500">Peacefill Tawiah</p>
+                  <p className="flex-auto my-auto text-white text-opacity-50 text-[16px] font-normal font-weight-500">Peacefill Tawiah</p>
                 </div>
-                <p className="mt-2.5 font-Poppins text-[14px] text-white text-opacity-50 font-light">
+                <p className="mt-2.5  text-[14px] text-white text-opacity-50 font-light">
                   Contact:
                 </p>
-                <p className="mt-2.5 font-Poppins text-[14px] text-white text-opacity-50 font-light">
+                <p className="mt-2.5 text-[14px] text-white text-opacity-50 font-light">
                   peacefilltawiah123@gmail.com
                 </p>
-                <p className="mt-2.5 font-Poppins text-[14px] text-white text-opacity-50 font-light">
+                <p className="mt-2.5  text-[14px] text-white text-opacity-50 font-light">
                   +(233) 550 745 627
                 </p>
                 <div className="flex flex-row gap-5 mt-2.5">
@@ -113,15 +113,15 @@ const Footer = () => {
             <div className="flex flex-col w-[30%] ml-5 max-md:ml-0 max-md:w-full">
               <div className="flex gap-x-10 text-sm text-white text-opacity-50 max-md:mt-10 my-auto">
                 <div className="flex flex-col">
-                  <p className="mt-2.5 font-Poppins text-[14px] text-white text-opacity-50 font-light">Expertise</p>
-                  <p className="mt-2.5 font-Poppins text-[14px] text-white text-opacity-50 font-light">Work Experience</p>
-                  <p className="mt-2.5 font-Poppins text-[14px] text-white text-opacity-50 font-light">Tech Stack</p>
-                  <p className="mt-2.5 font-Poppins text-[14px] text-white text-opacity-50 font-light">Services</p>
+                  <p className="mt-2.5  text-[14px] text-white text-opacity-50 font-light">Expertise</p>
+                  <p className="mt-2.5  text-[14px] text-white text-opacity-50 font-light">Work Experience</p>
+                  <p className="mt-2.5 text-[14px] text-white text-opacity-50 font-light">Tech Stack</p>
+                  <p className="mt-2.5 text-[14px] text-white text-opacity-50 font-light">Services</p>
                 </div>
                 <div className="flex flex-col my-auto">
-                  <p className="mt-2.5 font-Poppins text-[14px] text-white text-opacity-50 font-light">Projects</p>
-                  <p className="mt-2.5 font-Poppins text-[14px] text-white text-opacity-50 font-light">Get In Touch</p>
-                  <p className="mt-2.5 font-Poppins text-[14px] text-white text-opacity-50 font-light">About Me</p>
+                  <p className="mt-2.5  text-[14px] text-white text-opacity-50 font-light">Projects</p>
+                  <p className="mt-2.5  text-[14px] text-white text-opacity-50 font-light">Get In Touch</p>
+                  <p className="mt-2.5  text-[14px] text-white text-opacity-50 font-light">About Me</p>
                 </div>
               </div>
             </div>
@@ -150,9 +150,9 @@ const Footer = () => {
                       fill-opacity="0.5"
                     />
                   </svg>
-                  <p className="font-Poppins text-[14px] text-white text-opacity-50 font-light">2024 Peacefill Tawiah</p>
+                  <p className="text-[14px] text-white text-opacity-50 font-light">2024 Peacefill Tawiah</p>
                 </div>
-                <p className="mt-2.5 font-Poppins text-[14px] text-white text-opacity-50 font-light">
+                <p className="mt-2.5 text-[14px] text-white text-opacity-50 font-light">
                   PT is a personal brand by Peacefill Tawiah.
                   <br />
                   Newly curated with a Logo as trademark to be registered.
