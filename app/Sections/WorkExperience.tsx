@@ -19,7 +19,7 @@ const WorkExperience: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full h-auto flex justify-center bg-black mb-48 relative overflow-hidden">
+    <div className="w-full h-auto flex justify-center bg-black pb-48 relative overflow-hidden">
       {/* Floating Particles */}
       {particles.map((particle, index) => (
         <m.div
