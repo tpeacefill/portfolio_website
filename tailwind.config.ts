@@ -14,10 +14,17 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       fontFamily: {
-        Poppins: ['var(--poppins)'],
+        Poppins: ["var(--poppins)", "sans-serif"],
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addBase }: { addBase: (styles: Record<string, any>) => void }) {
+      addBase({
+        "html": { scrollBehavior: "smooth" },
+      });
+    },
+  ],
 };
+
 export default config;

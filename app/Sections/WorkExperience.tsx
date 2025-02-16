@@ -45,12 +45,12 @@ const WorkExperience: React.FC = () => {
       <div className="w-full h-auto max-w-screen-xl flex flex-col px-4 relative z-10">
         {/* Grid Pattern Overlay */}
         <div 
-          className="absolute inset-0" 
-          style={{
-            backgroundImage: 'linear-gradient(#8A74FF15 1px, transparent 1px), linear-gradient(to right, #8A74FF15 1px, transparent 1px)',
-            backgroundSize: '50px 50px'
-          }}
-        />
+        className="absolute inset-0 w-full h-[calc(100%+12rem)]" 
+        style={{
+          backgroundImage: 'linear-gradient(#8A74FF15 1px, transparent 1px), linear-gradient(to right, #8A74FF15 1px, transparent 1px)',
+          backgroundSize: '50px 50px'
+        }}
+      />
 
         <h1 className="w-full text-[28px] sm:text-[28px] md:text-[36px] lg:text-[40px] lg:mb-24 md:mb-24  font-light text-white relative">
           <m.span

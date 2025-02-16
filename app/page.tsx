@@ -10,19 +10,20 @@ import GetInTouch from "./Sections/GetInTouch";
 import AboutMe from "./Sections/AboutMe";
 import Footer from "./Sections/Footer";
 
+// In Home component
 export default function Home() {
   return (
     <div className="w-full min-h-screen bg-black flex flex-col">
       <Navbar />
       <HeroSection />
-      <Expertise />
-      <WorkExperience />
-      <Stack/>
-      <Services />
-      <ProjectsDisplaytext />
+      <div id="expertise" className="relative"><Expertise /></div>
+      <div id="work-experience"><WorkExperience /></div>
+      <div id="tech-stack"><Stack/></div>
+      <div id="services"><Services /></div>
+      <div id="projects"><ProjectsDisplaytext /></div>
       <ProjectsPortfolio/>
-      <GetInTouch />
-      <AboutMe />
+      <div id="get-in-touch"><GetInTouch /></div>
+      <div id="about-me"><AboutMe /></div>
       <Footer />
     </div>
   );

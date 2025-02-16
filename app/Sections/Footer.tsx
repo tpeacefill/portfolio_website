@@ -1,167 +1,148 @@
-import React from "react";
+'use client'
+
+import React, { useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Linkedin, Twitter, Instagram, Github, Copyright } from "lucide-react";
 
 const Footer = () => {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end end"]
+  });
+
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
+  const y = useTransform(scrollYProgress, [0, 0.5], [50, 0]);
+
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    }
+  };
+
   return (
-    <div className="w-full h-auto flex justify-center bg-black mt-36 mb-24">
-      <div className="w-full max-w-screen-xl flex px-4">
-        <div className="px-5 w-full">
-          <div className="flex max-md:flex-col">
-            <div className="flex flex-col w-[30%] max-md:ml-0 max-md:w-full ">
-              <div className="flex flex-col grow text-sm text-white text-opacity-50 max-md:mt-10 justify-center">
-                <div className="flex gap-2.5 text-base font-medium">
-                  <Image
-                    src="/portfolio_logo.svg"
-                    alt="logo"
-                    width={40}
-                    height={40}
-                  />
-                  <p className="flex-auto my-auto text-white text-opacity-50 text-[16px] font-normal font-weight-500">Peacefill Tawiah</p>
-                </div>
-                <p className="mt-2.5  text-[14px] text-white text-opacity-50 font-light">
-                  Contact:
-                </p>
-                <p className="mt-2.5 text-[14px] text-white text-opacity-50 font-light">
+    <div className="relative w-full overflow-hidden" ref={containerRef}>
+      {/* Modern gradient background */}
+      <div 
+        className="absolute inset-0 w-full h-full bg-gradient-to-b from-transparent to-black/10"
+      />
+      
+      {/* Subtle grid overlay */}
+      <div 
+        className="absolute inset-0 w-full h-full opacity-5" 
+        style={{
+          backgroundImage: 'linear-gradient(#8A74FF 0.5px, transparent 0.5px), linear-gradient(to right, #8A74FF 0.5px, transparent 0.5px)',
+          backgroundSize: '30px 30px'
+        }}
+      />
+
+      <motion.div 
+        className="w-full h-auto flex justify-center bg-transparent py-16"
+        style={{ opacity, y }}
+      >
+        <div className="w-full max-w-screen-xl px-6">
+          <motion.div 
+            className="flex flex-col items-center space-y-12"
+            variants={{
+              hidden: {},
+              visible: {
+                transition: {
+                  staggerChildren: 0.15
+                }
+              }
+            }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            {/* Brand and Contact Section */}
+            <motion.div 
+              className="flex flex-col items-center text-center"
+              variants={fadeInUp}
+            >
+              <div className="flex items-center space-x-3 mb-6">
+                <Image
+                  src="/portfolio_logo.svg"
+                  alt="logo"
+                  width={48}
+                  height={48}
+                  className="animate-pulse"
+                />
+                <h2 className="text-white text-opacity-90 text-xl font-light">
+                  Peacefill Tawiah
+                </h2>
+              </div>
+              
+              <div className="text-white text-opacity-60 space-y-2 mb-8">
+                <p className="text-sm font-light hover:text-opacity-90 transition-all">
                   peacefilltawiah123@gmail.com
                 </p>
-                <p className="mt-2.5  text-[14px] text-white text-opacity-50 font-light">
+                <p className="text-sm font-light hover:text-opacity-90 transition-all">
                   +(233) 550 745 627
                 </p>
-                <div className="flex flex-row gap-5 mt-2.5">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M12.51 8.796V10.493C12.8654 9.95168 13.3552 9.5119 13.9316 9.21671C14.5079 8.92152 15.151 8.78103 15.798 8.809C19.253 8.809 20 10.969 20 13.779V19.5H16.8V14.428C16.8 13.218 16.556 11.662 14.672 11.662C12.845 11.662 12.533 12.979 12.533 14.338V19.5H9.34299V8.796H12.51ZM7.19999 6.106C7.1996 6.423 7.10563 6.73284 6.92987 6.99665C6.75411 7.26047 6.50438 7.46653 6.21199 7.589C5.91972 7.71048 5.59791 7.74226 5.28753 7.68029C4.97714 7.61832 4.69221 7.4654 4.46899 7.241C4.24536 7.01646 4.09311 6.73081 4.03138 6.41997C3.96966 6.10913 4.00123 5.78698 4.1221 5.49403C4.24298 5.20108 4.44778 4.95041 4.71074 4.77354C4.9737 4.59667 5.28309 4.5015 5.59999 4.5C5.81061 4.5 6.01916 4.54158 6.21368 4.62236C6.40819 4.70315 6.58484 4.82154 6.73349 4.97075C6.88214 5.11996 6.99987 5.29705 7.07993 5.49186C7.15998 5.68668 7.20078 5.89538 7.19999 6.106Z"
-                      fill="white"
-                      fill-opacity="0.5"
-                    />
-                    <path
-                      d="M7.2 8.80908H4V19.5001H7.2V8.80908Z"
-                      fill="white"
-                      fill-opacity="0.5"
-                    />
-                  </svg>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                  >
-                    <path
-                      d="M0.833374 1.6665H2.91671L15.4167 18.3332H13.3334L0.833374 1.6665Z"
-                      fill="white"
-                      fill-opacity="0.5"
-                    />
-                    <path
-                      d="M4.58337 1.6665H6.66671L19.1667 18.3332H17.0834L4.58337 1.6665Z"
-                      fill="white"
-                      fill-opacity="0.5"
-                    />
-                    <path
-                      d="M2.5 1.6665H6.66667V3.33317H2.5V1.6665Z"
-                      fill="white"
-                      fill-opacity="0.5"
-                    />
-                    <path
-                      d="M13.3334 18.3332H17.5V16.6665H13.3334V18.3332Z"
-                      fill="white"
-                      fill-opacity="0.5"
-                    />
-                    <path
-                      d="M15.4167 1.6665H18.3333L4.16667 18.3332H1.25L15.4167 1.6665Z"
-                      fill="white"
-                      fill-opacity="0.5"
-                    />
-                  </svg>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                  >
-                    <path
-                      d="M12.001 9C11.2054 9 10.4423 9.31607 9.87968 9.87868C9.31707 10.4413 9.001 11.2044 9.001 12C9.001 12.7956 9.31707 13.5587 9.87968 14.1213C10.4423 14.6839 11.2054 15 12.001 15C12.7966 15 13.5597 14.6839 14.1223 14.1213C14.6849 13.5587 15.001 12.7956 15.001 12C15.001 11.2044 14.6849 10.4413 14.1223 9.87868C13.5597 9.31607 12.7966 9 12.001 9ZM12.001 7C13.3271 7 14.5989 7.52678 15.5365 8.46447C16.4742 9.40215 17.001 10.6739 17.001 12C17.001 13.3261 16.4742 14.5979 15.5365 15.5355C14.5989 16.4732 13.3271 17 12.001 17C10.6749 17 9.40315 16.4732 8.46547 15.5355C7.52778 14.5979 7.001 13.3261 7.001 12C7.001 10.6739 7.52778 9.40215 8.46547 8.46447C9.40315 7.52678 10.6749 7 12.001 7ZM18.501 6.75C18.501 7.08152 18.3693 7.39946 18.1349 7.63388C17.9005 7.8683 17.5825 8 17.251 8C16.9195 8 16.6015 7.8683 16.3671 7.63388C16.1327 7.39946 16.001 7.08152 16.001 6.75C16.001 6.41848 16.1327 6.10054 16.3671 5.86612C16.6015 5.6317 16.9195 5.5 17.251 5.5C17.5825 5.5 17.9005 5.6317 18.1349 5.86612C18.3693 6.10054 18.501 6.41848 18.501 6.75ZM12.001 4C9.527 4 9.123 4.007 7.972 4.058C7.188 4.095 6.662 4.2 6.174 4.39C5.76583 4.54037 5.39672 4.78063 5.094 5.093C4.78127 5.39562 4.54066 5.76474 4.39 6.173C4.2 6.663 4.095 7.188 4.059 7.971C4.007 9.075 4 9.461 4 12C4 14.475 4.007 14.878 4.058 16.029C4.095 16.812 4.2 17.339 4.389 17.826C4.559 18.261 4.759 18.574 5.091 18.906C5.428 19.242 5.741 19.443 6.171 19.609C6.665 19.8 7.191 19.906 7.971 19.942C9.075 19.994 9.461 20 12 20C14.475 20 14.878 19.993 16.029 19.942C16.811 19.905 17.337 19.8 17.826 19.611C18.2342 19.4606 18.6033 19.2204 18.906 18.908C19.243 18.572 19.444 18.259 19.61 17.828C19.8 17.336 19.906 16.81 19.942 16.028C19.994 14.925 20 14.538 20 12C20 9.526 19.993 9.122 19.942 7.971C19.905 7.189 19.799 6.661 19.61 6.173C19.4596 5.76483 19.2194 5.39572 18.907 5.093C18.6044 4.78027 18.2353 4.53966 17.827 4.389C17.337 4.199 16.811 4.094 16.029 4.058C14.926 4.006 14.54 4 12 4M12 2C14.717 2 15.056 2.01 16.123 2.06C17.187 2.11 17.913 2.277 18.55 2.525C19.21 2.779 19.766 3.123 20.322 3.678C20.8307 4.17773 21.2242 4.78247 21.475 5.45C21.722 6.087 21.89 6.813 21.94 7.878C21.987 8.944 22 9.283 22 12C22 14.717 21.99 15.056 21.94 16.122C21.89 17.188 21.722 17.912 21.475 18.55C21.2242 19.2175 20.8307 19.8223 20.322 20.322C19.8223 20.8307 19.2175 21.2242 18.55 21.475C17.913 21.722 17.187 21.89 16.123 21.94C15.056 21.987 14.717 22 12 22C9.283 22 8.944 21.99 7.877 21.94C6.813 21.89 6.088 21.722 5.45 21.475C4.78247 21.2242 4.17773 20.8307 3.678 20.322C3.16931 19.8223 2.77582 19.2175 2.525 18.55C2.277 17.913 2.11 17.187 2.06 16.122C2.012 15.056 2 14.717 2 12C2 9.283 2.01 8.944 2.06 7.878C2.11 6.812 2.277 6.088 2.525 5.45C2.77582 4.78247 3.16931 4.17773 3.678 3.678C4.17773 3.16931 4.78247 2.77582 5.45 2.525C6.087 2.277 6.812 2.11 7.877 2.06C8.945 2.013 9.284 2 12.001 2"
-                      fill="white"
-                      fill-opacity="0.5"
-                    />
-                  </svg>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                  >
-                    <path
-                      d="M12 2.24707C9.62543 2.24702 7.32833 3.09195 5.51977 4.63068C3.7112 6.1694 2.50921 8.30149 2.12888 10.6454C1.74855 12.9893 2.21471 15.3921 3.44394 17.4237C4.67317 19.4554 6.58525 20.9833 8.838 21.7341C9.338 21.8221 9.525 21.5221 9.525 21.2591C9.525 21.0221 9.513 20.2341 9.513 19.3971C7 19.8591 6.35 18.7841 6.15 18.2221C5.92814 17.6748 5.57634 17.1898 5.125 16.8091C4.775 16.6221 4.275 16.1591 5.112 16.1471C5.43188 16.1817 5.7387 16.2929 6.00644 16.4714C6.27417 16.6498 6.49493 16.8902 6.65 17.1721C6.78673 17.4177 6.9706 17.634 7.19107 17.8085C7.41153 17.983 7.66427 18.1123 7.93478 18.1889C8.2053 18.2656 8.48828 18.2881 8.76751 18.2551C9.04674 18.2222 9.31673 18.1345 9.562 17.9971C9.60532 17.4884 9.83206 17.0129 10.2 16.6591C7.975 16.4091 5.65 15.5471 5.65 11.7221C5.63583 10.728 6.00258 9.76628 6.675 9.03407C6.36931 8.17029 6.40508 7.22236 6.775 6.38407C6.775 6.38407 7.612 6.12207 9.525 7.40907C11.1613 6.95902 12.8887 6.95902 14.525 7.40907C16.437 6.10907 17.275 6.38407 17.275 6.38407C17.645 7.22234 17.6808 8.1703 17.375 9.03407C18.0495 9.76502 18.4165 10.7276 18.4 11.7221C18.4 15.5591 16.062 16.4091 13.838 16.6591C14.0765 16.901 14.2601 17.1915 14.3764 17.5107C14.4927 17.8299 14.5389 18.1704 14.512 18.5091C14.512 19.8471 14.5 20.9221 14.5 21.2591C14.5 21.5221 14.687 21.8341 15.187 21.7341C17.4356 20.977 19.342 19.4455 20.5658 17.4128C21.7897 15.3802 22.2513 12.9788 21.8684 10.6373C21.4854 8.29573 20.2828 6.1665 18.4752 4.62965C16.6676 3.0928 14.3726 2.24836 12 2.24707Z"
-                      fill="white"
-                      fill-opacity="0.5"
-                    />
-                  </svg>
-                </div>
               </div>
-            </div>
-            <div className="flex flex-col w-[30%] ml-5 max-md:ml-0 max-md:w-full">
-              <div className="flex gap-x-10 text-sm text-white text-opacity-50 max-md:mt-10 my-auto">
-                <div className="flex flex-col">
-                  <p className="mt-2.5  text-[14px] text-white text-opacity-50 font-light">Expertise</p>
-                  <p className="mt-2.5  text-[14px] text-white text-opacity-50 font-light">Work Experience</p>
-                  <p className="mt-2.5 text-[14px] text-white text-opacity-50 font-light">Tech Stack</p>
-                  <p className="mt-2.5 text-[14px] text-white text-opacity-50 font-light">Services</p>
-                </div>
-                <div className="flex flex-col my-auto">
-                  <p className="mt-2.5  text-[14px] text-white text-opacity-50 font-light">Projects</p>
-                  <p className="mt-2.5  text-[14px] text-white text-opacity-50 font-light">Get In Touch</p>
-                  <p className="mt-2.5  text-[14px] text-white text-opacity-50 font-light">About Me</p>
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col ml-5 w-[40%] max-md:ml-0 max-md:w-full">
-              <div className="flex flex-col my-auto text-sm text-white text-opacity-50 max-md:mt-10">
-                <div className="flex gap-1.5 self-start flex-row items-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
+            </motion.div>
+
+            {/* Social Links */}
+            <motion.div 
+              className="flex space-x-8"
+              variants={fadeInUp}
+            >
+              {[
+                { icon: Linkedin, href: "https://www.linkedin.com/in/peacefill-tawiah/" },
+                { icon: Twitter, href: "https://x.com/TPeacefill" },
+                { icon: Instagram, href: "https://www.instagram.com/tpeacefill/" },
+                { icon: Github, href: "https://github.com/tpeacefill" }
+              ].map((social, index) => (
+                <Link 
+                  key={index}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <motion.div
+                    whileHover={{ 
+                      scale: 1.1,
+                      y: -2
+                    }}
+                    className="cursor-pointer"
                   >
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M1.04175 9.99984C1.04175 5.05234 5.05258 1.0415 10.0001 1.0415C14.9476 1.0415 18.9584 5.05234 18.9584 9.99984C18.9584 14.9473 14.9476 18.9582 10.0001 18.9582C5.05258 18.9582 1.04175 14.9473 1.04175 9.99984ZM10.0001 2.2915C7.9557 2.2915 5.99506 3.10363 4.54947 4.54922C3.10387 5.99482 2.29175 7.95546 2.29175 9.99984C2.29175 12.0442 3.10387 14.0049 4.54947 15.4505C5.99506 16.896 7.9557 17.7082 10.0001 17.7082C12.0445 17.7082 14.0051 16.896 15.4507 15.4505C16.8963 14.0049 17.7084 12.0442 17.7084 9.99984C17.7084 7.95546 16.8963 5.99482 15.4507 4.54922C14.0051 3.10363 12.0445 2.2915 10.0001 2.2915Z"
-                      fill="white"
-                      fill-opacity="0.5"
+                    <social.icon 
+                      size={24}
+                      className="text-white opacity-50 hover:opacity-90 transition-all duration-300" 
                     />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M10.2384 7.29151C8.56925 7.29151 7.29175 8.54401 7.29175 9.99984C7.29175 11.4557 8.56925 12.7082 10.2384 12.7082C10.6642 12.7082 11.0676 12.6248 11.4301 12.4773C11.5061 12.4463 11.5875 12.4306 11.6695 12.431C11.7516 12.4314 11.8328 12.448 11.9085 12.4798C11.9842 12.5116 12.0529 12.558 12.1106 12.6163C12.1684 12.6747 12.2141 12.7438 12.2451 12.8198C12.2761 12.8958 12.2919 12.9772 12.2914 13.0593C12.291 13.1414 12.2744 13.2226 12.2426 13.2983C12.2108 13.374 12.1644 13.4426 12.1061 13.5004C12.0477 13.5581 11.9786 13.6038 11.9026 13.6348C11.374 13.8493 10.8088 13.9591 10.2384 13.9582C7.96175 13.9582 6.04175 12.2257 6.04175 9.99984C6.04175 7.77401 7.96175 6.04151 10.2384 6.04151C10.8088 6.0406 11.374 6.15041 11.9026 6.36484C12.0562 6.42739 12.1787 6.54839 12.243 6.70124C12.3074 6.85408 12.3085 7.02624 12.2459 7.17984C12.1834 7.33345 12.0624 7.45591 11.9095 7.5203C11.7567 7.58469 11.5845 7.58572 11.4309 7.52318C11.0522 7.36939 10.6472 7.29071 10.2384 7.29151Z"
-                      fill="white"
-                      fill-opacity="0.5"
-                    />
-                  </svg>
-                  <p className="text-[14px] text-white text-opacity-50 font-light">2024 Peacefill Tawiah</p>
-                </div>
-                <p className="mt-2.5 text-[14px] text-white text-opacity-50 font-light">
-                  PT is a personal brand by Peacefill Tawiah.
-                  <br />
-                  Newly curated with a Logo as trademark to be registered.
+                  </motion.div>
+                </Link>
+              ))}
+            </motion.div>
+
+            {/* Copyright Section */}
+            <motion.div 
+              className="text-center"
+              variants={fadeInUp}
+            >
+              <div className="flex items-center justify-center space-x-2 mb-3">
+                <Copyright size={16} className="text-white opacity-50" />
+                <p className="text-sm text-white text-opacity-50 font-light">
+                  2024 Peacefill Tawiah
                 </p>
               </div>
-            </div>
-          </div>
+              <p className="text-sm text-white text-opacity-50 font-light max-w-md">
+                PT is a personal brand by Peacefill Tawiah.
+                Newly curated with a Logo as trademark to be registered.
+              </p>
+            </motion.div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
