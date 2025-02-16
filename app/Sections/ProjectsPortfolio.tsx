@@ -2,6 +2,7 @@
 
 import React, { useRef, useEffect, useState } from "react";
 import { motion, useScroll } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 interface ProjectCardProps {
   year: string;
@@ -26,6 +27,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 }) => {
   const [yPosition, setYPosition] = useState(0); // Initialize with 0
   const [windowHeight, setWindowHeight] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     // Set window height after component mounts
@@ -68,6 +70,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       style={{ 
         background: gradient
       }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <div className="flex gap-5 justify-between font-extralight max-md:flex-wrap">
         <p className="text-white font-thin text-[16px] md:text-[18px] lg:text-[20px]">{year}</p>
@@ -75,9 +79,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       </div>
       <div className="flex items-center mt-2 justify-between">
         <h1 className="text-[24px] md:text-[42px] lg:text-[64px] font-thin">{title}</h1>
-        <svg xmlns="http://www.w3.org/2000/svg" className="ml-4 w-12 h-12 lg:w-20 lg:h-20" viewBox="0 0 72 71" fill="none">
-          <path d="M28.266 24.3067H48.1534M48.1534 24.3067V44.1941M48.1534 24.3067L24.9515 47.5087" stroke="white" strokeWidth="4.6875" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
+        <motion.div
+          animate={{ rotate: isHovered ? -45 : 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <ArrowRight className="ml-4 w-8 h-8 lg:w-16 lg:h-16 text-white" strokeWidth={1.2} />
+        </motion.div>
       </div>
       <div className="shrink-0 mt-0 border-t border-white border-opacity-70" style={{ height: "0.5px" }} />
       <div className="shrink-0 mt-3 bg-white h-[640px]" />
