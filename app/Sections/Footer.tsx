@@ -164,7 +164,7 @@ const Footer = () => {
                 </p>
               </div>
               <p className="text-sm text-white text-opacity-50 font-light max-w-md">
-                PT is a personal creative brand by Peacefill Tawiah.
+                PT is a personal brand by Peacefill Tawiah.
                 Newly curated with a Logo as trademark to be registered.
               </p>
             </motion.div>

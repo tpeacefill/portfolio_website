@@ -12,7 +12,7 @@
     "@icons-pack/react-simple-icons": "^11.2.0",
     "@splinetool/react-spline": "^4.0.0",
     "framer": "^2.4.1",
-    "framer-motion": "^12.4.3",
+    "framer-motion": "^10.18.0",
     "lucide-react": "^0.475.0",
     "motion": "^12.4.3",
     "next": "14.2.5",
