@@ -3,6 +3,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { motion, useScroll } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 interface ProjectCardProps {
   year: string;
@@ -47,8 +48,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     if (index === 0 || !windowHeight) return;
     
     const calculatePosition = () => {
-      const startScroll = 0.1 + ((index - 1) * 0.2);
-      const endScroll = Math.min(0.95, 0.3 + ((index - 1) * 0.2));
+      const startScroll = 0.1 + ((index - 1) * 0.15);
+      const endScroll = Math.min(0.95, 0.25 + ((index - 1) * 0.15));
       
       if (scrollYProgress < startScroll) {
         setYPosition(windowHeight);
@@ -57,7 +58,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       } else {
         const progress = (scrollYProgress - startScroll) / (endScroll - startScroll);
         const newPosition = windowHeight - (progress * (windowHeight - (index * CARD_SPACING)));
-        setYPosition(newPosition);
+        setYPosition(Math.round(newPosition));
       }
     };
 
@@ -68,7 +69,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     <div
       className="flex flex-col px-8 py-6 text-white rounded-xl max-md:px-5"
       style={{ 
-        background: gradient
+        background: gradient,
+        width: "100%"
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -87,7 +89,45 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </motion.div>
       </div>
       <div className="shrink-0 mt-0 border-t border-white border-opacity-70" style={{ height: "0.5px" }} />
-      <div className="shrink-0 mt-3 bg-white h-[640px]" />
+      <div className="shrink-0 mt-3 relative overflow-hidden" style={{ 
+        height: "640px",
+        aspectRatio: "853/640",
+        maxWidth: "100%"
+      }}>
+        {title === "GridGuard" && (
+          <div className="absolute inset-0 bg-[#1E1E1E] flex items-center justify-center">
+            <Image 
+              src="/GridGuard.svg" 
+              alt="GridGuard" 
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+        )}
+        {title === "Airstate" && (
+          <div className="absolute inset-0 bg-[#1E1E1E] flex items-center justify-center">
+            <Image 
+              src="/airstate.svg" 
+              alt="Airstate" 
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+        )}
+        {title === "VitalNeoCare" && (
+          <div className="absolute inset-0 bg-[#1E1E1E] flex items-center justify-center">
+            <Image 
+              src="/vitalneocare.svg" 
+              alt="VitalNeoCare" 
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 
@@ -117,7 +157,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       }}
       initial={false}
       animate={{ y: yPosition }}
-      transition={{ type: "spring", stiffness: 100, damping: 20 }}
+      transition={{ 
+        type: "spring", 
+        stiffness: 80,
+        damping: 25,
+        mass: 0.5
+      }}
     >
       <CardContent />
     </motion.div>

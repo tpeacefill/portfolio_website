@@ -108,7 +108,6 @@ const Footer = () => {
                   alt="logo"
                   width={48}
                   height={48}
-                  className="animate-pulse"
                 />
                 <h2 className="text-white text-opacity-90 text-xl font-light">
                   Peacefill Tawiah
