@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useRef, useEffect, useState } from "react";
-import { motion, useSpring, useTransform } from "framer-motion";
+import { motion, useSpring, useTransform, useScroll } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 
@@ -42,21 +42,24 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   projectsLength
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: cardScrollProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "end start"]
+  });
 
-  // Calculate dynamic values for animations
-  const progress = (scrollYProgress - (index * 0.25)) * 4;
-  const clampedProgress = Math.min(Math.max(progress, 0), 1);
+  const opacity = useTransform(cardScrollProgress, [0, 0.5, 1], [0, 1, 0]);
+  const y = useTransform(cardScrollProgress, [0, 0.5, 1], [50, 0, -50]);
+  const scale = useTransform(cardScrollProgress, [0, 0.5, 1], [0.8, 1, 0.8]);
   
   return (
     <motion.div
       ref={cardRef}
-      className="w-full max-w-[98vw] mx-auto relative px-0 sm:px-2 md:px-4"
+      className="w-full max-w-[98vw] mx-auto relative px-0 sm:px-2 md:px-4 mb-8"
       style={{
-        scale: 0.6 + (clampedProgress * 0.4),
-        opacity: 0.3 + (clampedProgress * 0.7),
-        y: 100 - (clampedProgress * 100),
+        scale: scale,
+        opacity: opacity,
+        y: y,
         zIndex: projectsLength - index,
-        marginTop: index === 0 ? '0' : '-100px'
       }}
     >
       <div
@@ -109,7 +112,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               <motion.div
                 className="h-full bg-white"
                 style={{ 
-                  width: `${clampedProgress * 100}%`
+                  width: `${scrollYProgress * 100}%`
                 }}
               />
             </div>
@@ -164,9 +167,14 @@ const ProjectsPortfolio: React.FC<ProjectsPortfolioProps> = ({ isVisible }) => {
   useEffect(() => {
     const updateDimensions = () => {
       if (containerRef.current) {
-        // This will determine the overall scroll distance
-        sectionHeight.current = window.innerHeight * 5;
-        containerRef.current.style.height = `${sectionHeight.current}px`;
+        // Only set height for larger screens where horizontal scrolling is needed
+        if (window.innerWidth >= 768) { // md breakpoint
+          sectionHeight.current = window.innerHeight * 5;
+          containerRef.current.style.height = `${sectionHeight.current}px`;
+        } else {
+          // For smaller screens, let the content determine the height
+          containerRef.current.style.height = 'auto';
+        }
       }
     };
 
@@ -204,28 +212,27 @@ const ProjectsPortfolio: React.FC<ProjectsPortfolioProps> = ({ isVisible }) => {
     <div 
       ref={containerRef}
       className="relative bg-black"
-      style={{ 
-        height: '500vh' // Ensure enough scroll space
-      }}
     >
-      {/* Sticky container for portfolio content */}
+      {/* Container for portfolio content */}
       <div 
-        className="sticky top-0 left-0 w-full h-screen flex items-center justify-center overflow-hidden"
+        className="w-full md:sticky md:top-0 md:left-0 md:h-screen flex items-center justify-center overflow-hidden"
       >
         {/* Vertical layout for small screens */}
-        <div className="md:hidden max-w-[2000px] w-full mx-auto relative pt-20 pb-10">
-          {projects.map((project, index) => (
-            <ProjectCard
-              key={index}
-              {...project}
-              index={index}
-              scrollYProgress={smoothProgress.get()}
-              projectsLength={projects.length}
-            />
-          ))}
+        <div className="md:hidden w-full">
+          <div className="max-w-[98vw] mx-auto py-8">
+            {projects.map((project, index) => (
+              <ProjectCard
+                key={index}
+                {...project}
+                index={index}
+                scrollYProgress={0}
+                projectsLength={projects.length}
+              />
+            ))}
+          </div>
         </div>
 
-        {/* Horizontal layout for medium screens and above - PROPERLY CENTERED */}
+        {/* Horizontal layout for medium screens and above */}
         <div className="hidden md:block h-screen w-full overflow-hidden">
           <div className="h-full flex items-center justify-center relative">
             {projects.map((project, index) => {
@@ -344,7 +351,7 @@ const ProjectsPortfolio: React.FC<ProjectsPortfolioProps> = ({ isVisible }) => {
         </div>
 
         {/* Progress visualization (optional) */}
-        <div className="absolute bottom-4 right-4 text-white/50 text-sm">
+        <div className="absolute bottom-4 right-4 text-white/50 text-sm hidden md:block">
           {Math.round(smoothProgress.get() * 100)}%
         </div>
       </div>
