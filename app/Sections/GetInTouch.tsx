@@ -1,37 +1,38 @@
 'use client'
-import React, { useRef } from "react";
+import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import HighlightPlus from "../Components/HighlightPlus";
+import ContactModal from "../Components/ContactModal";
 
 const GetInTouch = () => {
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
   });
 
-  const headerY = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.8, 1, 1, 0.8]);
+  const headerY = useTransform(scrollYProgress, [0, 1], [50, -50]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.2
+        staggerChildren: 0.1
       }
     }
   };
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
-      y: 0,
       opacity: 1,
+      y: 0,
       transition: {
         duration: 0.5,
         ease: "easeOut"
@@ -108,13 +109,15 @@ const GetInTouch = () => {
             Please do well to get in touch with me and let&apos;s get things started.
           </motion.p>
 
-          <motion.div
+          
+          <motion.a
+            onClick={() => setIsModalOpen(true)}
             className="flex gap-5 py-2.5 pr-3 pl-12 mt-10 text-2xl font-medium bg-violet-500 rounded-[50px] max-md:pl-5 cursor-pointer"
             variants={buttonVariants}
             whileHover="hover"
             style={{
               y: useTransform(scrollYProgress, [0, 1], [0, -30]),
-              scale: useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1, 0.9])
+              scale: useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1, 0.9]),
             }}
           >
             <p className="flex-auto my-auto font-light">Get In Touch</p>
@@ -126,9 +129,15 @@ const GetInTouch = () => {
                 <ArrowRight className="w-8 h-8 text-black" strokeWidth={1.5} />
               </motion.div>
             </div>
-          </motion.div>
+          </motion.a>
         </motion.div>
       </div>
+
+      {/* Contact Modal */}
+      <ContactModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </div>
   );
 };

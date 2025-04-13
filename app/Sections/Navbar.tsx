@@ -1,9 +1,11 @@
 'use client'
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import ContactModal from "../Components/ContactModal";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,7 +35,10 @@ const Navbar = () => {
             Peacefill Tawiah
           </p>
         </div>
-        <button className="w-40 h-11 rounded-full bg-gradient-to-r from-[#8A74FF] via-[#1A1632] to-[#8A74FF] p-[1px]">
+        <button 
+          onClick={() => setIsModalOpen(true)}
+          className="w-40 h-11 rounded-full bg-gradient-to-r from-[#8A74FF] via-[#1A1632] to-[#8A74FF] p-[1px]"
+        >
           <div className="flex items-center justify-center h-full w-full bg-black rounded-full">
             <span className="text-white  text-[15px] font-normal">
               Get In Touch
@@ -41,6 +46,12 @@ const Navbar = () => {
           </div>
         </button>
       </div>
+
+      {/* Contact Modal */}
+      <ContactModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </div>
   );
 };
