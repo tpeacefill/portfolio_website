@@ -3,11 +3,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion as m, useScroll, useTransform } from 'framer-motion';
 import { ArrowUpRight, Terminal, Layout, Code2 } from 'lucide-react';
-import ContactModal from "../Components/ContactModal";
 
-const HeroSection = () => {
+interface HeroSectionProps {
+  onOpenModal: () => void;
+}
+
+const HeroSection: React.FC<HeroSectionProps> = ({ onOpenModal }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const { scrollY } = useScroll();
   const [windowWidth, setWindowWidth] = useState(1024);
 
@@ -153,7 +155,7 @@ const Button = ({
                 transition={{ delay: 0.8 }}
                 whileHover={{ scale: 1.02, backgroundColor: 'rgba(255, 255, 255, 0.1)' }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() => setIsModalOpen(true)}
+                onClick={onOpenModal}
                 className="group flex items-center space-x-2 bg-white/5 border border-white/10 rounded-full px-6 py-3 text-white/90 transition-all"
               >
                 <span>Let&apos;s collaborate</span>
@@ -263,12 +265,6 @@ const Button = ({
           </m.div>
         </m.div>
       </div>
-
-      {/* Contact Modal */}
-      <ContactModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
     </div>
   );
 };

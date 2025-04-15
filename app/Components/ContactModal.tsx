@@ -61,14 +61,23 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+          className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            backdropFilter: 'blur(1px)',
+          }}
         >
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+            className="absolute inset-0 bg-black/40 backdrop-blur-[1px]"
             onClick={onClose}
           />
           
@@ -78,7 +87,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
             patternScaleX={2}
             patternScaleY={2}
             patternRefreshInterval={8}
-            patternAlpha={35}
+            patternAlpha={25}
           />
 
           {/* Modal content */}
@@ -86,7 +95,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
-            className="relative max-w-lg w-full bg-gradient-to-b from-zinc-900 to-black rounded-2xl overflow-hidden border border-[#8A74FF]/20"
+            className="relative max-w-lg w-full bg-gradient-to-b from-zinc-900/90 to-black/90 rounded-2xl overflow-hidden border border-[#8A74FF]/10"
           >
             {/* Close button */}
             <button

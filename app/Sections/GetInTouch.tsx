@@ -1,13 +1,15 @@
 'use client'
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import HighlightPlus from "../Components/HighlightPlus";
-import ContactModal from "../Components/ContactModal";
 
-const GetInTouch = () => {
+interface GetInTouchProps {
+  onOpenModal: () => void;
+}
+
+const GetInTouch: React.FC<GetInTouchProps> = ({ onOpenModal }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -110,8 +112,8 @@ const GetInTouch = () => {
           </motion.p>
 
           
-          <motion.a
-            onClick={() => setIsModalOpen(true)}
+          <motion.button
+            onClick={onOpenModal}
             className="flex gap-5 py-2.5 pr-3 pl-12 mt-10 text-2xl font-medium bg-violet-500 rounded-[50px] max-md:pl-5 cursor-pointer"
             variants={buttonVariants}
             whileHover="hover"
@@ -129,15 +131,9 @@ const GetInTouch = () => {
                 <ArrowRight className="w-8 h-8 text-black" strokeWidth={1.5} />
               </motion.div>
             </div>
-          </motion.a>
+          </motion.button>
         </motion.div>
       </div>
-
-      {/* Contact Modal */}
-      <ContactModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
     </div>
   );
 };

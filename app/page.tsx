@@ -11,12 +11,13 @@ import ProjectsPortfolio from "./Sections/ProjectsPortfolio";
 import GetInTouch from "./Sections/GetInTouch";
 import AboutMe from "./Sections/AboutMe";
 import Footer from "./Sections/Footer";
+import ContactModal from "./Components/ContactModal";
 // import ConstructionModal from "./Components/ConstructionModal";
 import { useState, useRef, useEffect } from 'react';
 
 // In Home component
 export default function Home() {
-  // const [showModal, setShowModal] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPortfolioVisible, setIsPortfolioVisible] = useState(false);
   const portfolioRef = useRef<HTMLDivElement>(null);
 
@@ -54,8 +55,8 @@ export default function Home() {
     <main className="w-full min-h-screen bg-black flex flex-col">
       {/* {showModal && <ConstructionModal onContinue={handleContinue} />} */}
       <div className={`transition-opacity duration-500 opacity-100`}>
-        <Navbar />
-        <HeroSection />
+        <Navbar onOpenModal={() => setIsModalOpen(true)} />
+        <HeroSection onOpenModal={() => setIsModalOpen(true)} />
         <div id="expertise" className="relative"><Expertise /></div>
         <div id="work-experience"><WorkExperience /></div>
         <div id="tech-stack"><Stack/></div>
@@ -64,10 +65,18 @@ export default function Home() {
         <div id="portfolio" ref={portfolioRef}>
           <ProjectsPortfolio isVisible={isPortfolioVisible} />
         </div>
-        <div id="get-in-touch"><GetInTouch /></div>
+        <div id="get-in-touch">
+          <GetInTouch onOpenModal={() => setIsModalOpen(true)} />
+        </div>
         <div id="about-me"><AboutMe /></div>
         <Footer />
       </div>
+
+      {/* Single instance of ContactModal */}
+      <ContactModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </main>
   );
 }
