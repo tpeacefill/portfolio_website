@@ -1,7 +1,7 @@
 'use client'
 
-import React, { useRef, useEffect, useState } from "react";
-import { motion, useSpring, useTransform, useScroll } from "framer-motion";
+import React, { useRef, useEffect, useState, useCallback, useMemo } from "react";
+import { motion, useSpring, useTransform, useScroll, useMotionValue } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 
@@ -13,6 +13,7 @@ interface ProjectCardProps {
   index: number;
   scrollYProgress: number;
   projectsLength: number;
+  link: string;
 }
 
 interface ProjectsPortfolioProps {
@@ -39,7 +40,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   gradient,
   index,
   scrollYProgress,
-  projectsLength
+  projectsLength,
+  link
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: cardScrollProgress } = useScroll({
@@ -79,6 +81,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               whileHover={{ scale: 1.1, rotate: -45 }}
               transition={{ duration: 0.3 }}
               className="bg-white p-2 sm:p-3 rounded-full cursor-pointer"
+              onClick={() => window.open(link, '_blank')}
             >
               <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 text-black" strokeWidth={1.5} />
             </motion.div>
@@ -126,87 +129,116 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 const ProjectsPortfolio: React.FC<ProjectsPortfolioProps> = ({ isVisible }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionHeight = useRef(0);
-  const [scrollY, setScrollY] = useState(0);
+  const rafId = useRef<number>();
+  const [currentProgress, setCurrentProgress] = useState(0);
   
-  // Smoothed scroll progress using Framer Motion's useSpring
+  // Smoothed scroll progress with optimized spring settings
   const smoothProgress = useSpring(0, { 
-    stiffness: 50, 
-    damping: 20, 
+    stiffness: 100, 
+    damping: 30, 
     restDelta: 0.001 
   });
 
-  // Project data
-  const projects = [
+  // Memoize project data to prevent re-creation
+  const projects = useMemo(() => [
     { 
       year: "2024", 
       category: "Mobile", 
       title: "GridGuard", 
-      gradient: "linear-gradient(135deg, #11D8F9, #0066FF)"
+      gradient: "linear-gradient(135deg, #11D8F9, #0066FF)",
+      link: "https://github.com/3dots-Studios/GridGuard1.1.git"
     },
     { 
       year: "2024", 
       category: "Web App", 
       title: "Airstate", 
-      gradient: "linear-gradient(135deg, #AE1729, #FF4D4D)"
+      gradient: "linear-gradient(135deg, #AE1729, #FF4D4D)",
+      link: "https://airstatefinder.web.app/"
     },
     { 
       year: "2025", 
       category: "Web", 
       title: "VitalNeoCare", 
-      gradient: "linear-gradient(135deg, #366D61, #2AAF74)"
+      gradient: "linear-gradient(135deg, #366D61, #2AAF74)",
+      link: "https://www.vitalneocare.com/"
     },
     { 
       year: "2025", 
       category: "Web", 
-      title: "Debuggers", 
-      gradient: "linear-gradient(135deg, #027B7F, #00B4D8)"
+      title: "SynBio4ALL", 
+      gradient: "linear-gradient(135deg, #10B981, #059669)",
+      link: "https://syn-bio4-all-new.vercel.app/"
     }
-  ];
+  ], []);
+
+  // Memoized resize handler
+  const updateDimensions = useCallback(() => {
+    if (containerRef.current) {
+      if (window.innerWidth >= 768) {
+        sectionHeight.current = window.innerHeight * 5;
+        containerRef.current.style.height = `${sectionHeight.current}px`;
+      } else {
+        containerRef.current.style.height = 'auto';
+      }
+    }
+  }, []);
 
   // Set up the section height
   useEffect(() => {
-    const updateDimensions = () => {
-      if (containerRef.current) {
-        // Only set height for larger screens where horizontal scrolling is needed
-        if (window.innerWidth >= 768) { // md breakpoint
-          sectionHeight.current = window.innerHeight * 5;
-          containerRef.current.style.height = `${sectionHeight.current}px`;
-        } else {
-          // For smaller screens, let the content determine the height
-          containerRef.current.style.height = 'auto';
-        }
-      }
-    };
-
     updateDimensions();
     window.addEventListener('resize', updateDimensions);
     return () => window.removeEventListener('resize', updateDimensions);
-  }, []);
+  }, [updateDimensions]);
 
-  // Handle scroll with improved smoothness
-  useEffect(() => {
-    const handleScroll = () => {
+  // Optimized scroll handler with RAF throttling
+  const handleScroll = useCallback(() => {
+    if (rafId.current) {
+      cancelAnimationFrame(rafId.current);
+    }
+    
+    rafId.current = requestAnimationFrame(() => {
       if (!containerRef.current) return;
 
       const rect = containerRef.current.getBoundingClientRect();
-      
-      // Store raw scroll position
-      setScrollY(window.scrollY);
-      
-      // Calculate progress based on how far the section has been scrolled
       const totalScrollDistance = sectionHeight.current - window.innerHeight;
       const scrolled = -rect.top;
       const progress = Math.max(0, Math.min(1, scrolled / totalScrollDistance));
       
-      // Update the smooth spring animation
+      // Update both the smooth progress and current progress
       smoothProgress.set(progress);
-    };
+      setCurrentProgress(progress);
+    });
+  }, [smoothProgress]);
 
+  useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Initial check
     
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [smoothProgress]);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafId.current) {
+        cancelAnimationFrame(rafId.current);
+      }
+    };
+  }, [handleScroll]);
+
+  // Memoized card calculation function
+  const calculateCardProps = useCallback((index: number, progress: number) => {
+    const totalCards = projects.length;
+    const totalTravelDistance = (totalCards - 1) * 100;
+    const positionOffset = progress * totalTravelDistance;
+    const xPosition = (index * 100) - positionOffset;
+    const distanceFromCenter = Math.abs(xPosition) / 80;
+    const clampedDistance = Math.min(distanceFromCenter, 1);
+    
+    return {
+      xPosition,
+      scale: Math.max(0.7, 1 - (clampedDistance * 0.3)),
+      opacity: Math.max(0.3, 1 - (clampedDistance * 0.7)),
+      zIndex: 10 - Math.round(clampedDistance * 5),
+      progressWidth: Math.max(0, 100 - (clampedDistance * 100))
+    };
+  }, [projects.length]);
 
   return (
     <div 
@@ -236,51 +268,27 @@ const ProjectsPortfolio: React.FC<ProjectsPortfolioProps> = ({ isVisible }) => {
         <div className="hidden md:block h-screen w-full overflow-hidden">
           <div className="h-full flex items-center justify-center relative">
             {projects.map((project, index) => {
-              // Get smooth progress from spring animation
-              const progress = smoothProgress.get();
-              const totalCards = projects.length;
-              
-              // Calculate total scroll distance as percentage of viewport
-              // The total travel needs to move from first card centered to last card centered
-              const totalTravelDistance = (totalCards - 1) * 100;
-                            
-              // Apply the scroll progress to determine current position
-              // When progress is 0, we should see first card (index 0) centered
-              // When progress is 1, we should see last card (index = totalCards-1) centered
-              const positionOffset = progress * totalTravelDistance;
-              
-              // Calculate the target position for this card
-              // For the first card (index 0):
-              //   When progress = 0: position will be 0 (centered)
-              //   When progress = 1: position will be -totalTravelDistance (far left)
-              // For the last card (index = totalCards-1):
-              //   When progress = 0: position will be +totalTravelDistance (far right)
-              //   When progress = 1: position will be 0 (centered)
-              const xPosition = (index * 100) - positionOffset;
-              
-              // Calculate how close this card is to the center
-              // When a card is at position 0, it's perfectly centered
-              const distanceFromCenter = Math.abs(xPosition) / 80;
-              const clampedDistance = Math.min(distanceFromCenter, 1);
-              
-              // Scale and opacity based on distance from center
-              const scale = 1 - (clampedDistance * 0.3);
-              const opacity = 1 - (clampedDistance * 0.7);
+              const progress = currentProgress;
+              const cardProps = calculateCardProps(index, progress);
               
               return (
                 <motion.div
                   key={index}
-                  className="absolute w-[80vw] max-w-[1000px]"
+                  className="absolute w-[80vw] max-w-[1000px] will-change-transform"
+                  animate={{
+                    x: `calc(${cardProps.xPosition}% - 40vw)`,
+                    scale: cardProps.scale,
+                    opacity: cardProps.opacity,
+                  }}
                   style={{
                     left: '50%',
-                    x: `calc(${xPosition}% - 40vw)`, // Properly center the card
-                    scale: Math.max(0.7, scale),
-                    opacity: Math.max(0.3, opacity),
-                    zIndex: 10 - Math.round(clampedDistance * 5),
+                    zIndex: cardProps.zIndex,
                   }}
                   transition={{
-                    duration: 0.8,
-                    ease: [0.16, 1, 0.3, 1]
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 25,
+                    mass: 0.8
                   }}
                 >
                   <div
@@ -300,6 +308,7 @@ const ProjectsPortfolio: React.FC<ProjectsPortfolioProps> = ({ isVisible }) => {
                           whileHover={{ scale: 1.1, rotate: -45 }}
                           transition={{ duration: 0.3 }}
                           className="bg-white p-3 rounded-full cursor-pointer"
+                          onClick={() => window.open(project.link, '_blank')}
                         >
                           <ArrowRight className="w-6 h-6 text-black" strokeWidth={1.5} />
                         </motion.div>
@@ -332,12 +341,13 @@ const ProjectsPortfolio: React.FC<ProjectsPortfolioProps> = ({ isVisible }) => {
                         <div className="h-2 w-28 bg-transparent border border-white/20 rounded-full overflow-hidden">
                           <motion.div
                             className="h-full bg-white"
-                            style={{
-                              width: `${Math.max(0, 100 - (clampedDistance * 100))}%`
+                            animate={{
+                              width: `${cardProps.progressWidth}%`
                             }}
                             transition={{
-                              duration: 0.8,
-                              ease: [0.16, 1, 0.3, 1]
+                              type: "spring",
+                              stiffness: 100,
+                              damping: 25
                             }}
                           />
                         </div>
@@ -350,9 +360,9 @@ const ProjectsPortfolio: React.FC<ProjectsPortfolioProps> = ({ isVisible }) => {
           </div>
         </div>
 
-        {/* Progress visualization (optional) */}
+        {/* Progress visualization */}
         <div className="absolute bottom-4 right-4 text-white/50 text-sm hidden md:block">
-          {Math.round(smoothProgress.get() * 100)}%
+          {Math.round(currentProgress * 100)}%
         </div>
       </div>
     </div>
